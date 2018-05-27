@@ -1,4 +1,4 @@
-package JavaStart.Lesson1;
+package JavaStart.Lesson2;
 /*
 Created by matua on 26.05.2018 at 20:42
 */
