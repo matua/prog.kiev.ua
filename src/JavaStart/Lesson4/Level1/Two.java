@@ -7,14 +7,21 @@ import java.util.Scanner;
 
 public class Two {
     public static void main(String[] args) {
-        System.out.println("Введите число больше 4 и меньше 16");
 
         int number;
-        int factorial = 1;
+        long factorial = 1;
 
         Scanner scanner = new Scanner(System.in);
-        number = scanner.nextInt();
 
+        while (true) {
+            System.out.println("Введите число больше 4 и меньше 16");
+            number = scanner.nextInt();
+            if ((number > 4) && (number < 16)) {
+                break;
+            } else {
+                System.out.println("Число не подходит под параметры задачи.\n");
+            }
+        }
         for (int i = number; i >= 1; i--) {
             factorial *= i;
         }
