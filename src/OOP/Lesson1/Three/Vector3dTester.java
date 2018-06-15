@@ -8,7 +8,7 @@ public class Vector3dTester {
         Vector3d vector3dOne = new Vector3d(-5, 3, 5);
         Vector3d vector3dTwo = new Vector3d(0, 2, -4);
 
-        System.out.println("Adding to vectors = " + vector3dOne.add(vector3dTwo));
+        System.out.println("Adding two vectors = " + vector3dOne.add(vector3dTwo));
 
         System.out.println("Vector multiplication of two vectors = " + vector3dOne.multiplyVector(vector3dTwo));
 
