@@ -42,8 +42,8 @@ public class Student extends Human {
     @Override
     public String toString() {
         return super.getLastName() + ' ' + super.getFirstName() + ' ' + super.getPatronymic() + "\n\t" + super.getAge() + ' ' +
-                "years old\n\tsex=" + super.isSex() +
-                "\n\tnerd=" + nerd +
+                "years old\n\t" + (super.isSex()?"Male":"Female") +
+                "\n\t" + (isNerd()?"is a nerd":"is not a nerd") +
                 "\n\tstudies at faculty of '" + faculty + '\'' +
                 "\n\tyear: " + yearofStudy;
     }
