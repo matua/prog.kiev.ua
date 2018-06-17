@@ -6,6 +6,15 @@ Created by matua on 15.06.2018 at 14:37
 public class Circle extends Shape{
     private Point center;
     private Point radius;
+    private double radiusDistance;
+
+
+    public Circle(Point center, Point radius) {
+        this.center = center;
+        this.radius = radius;
+        radiusDistance = Math.hypot(radius.getY() - center.getX(), radius.getY() - center.getX());
+
+    }
 
     public Point getCenter() {
         return center;
@@ -23,10 +32,6 @@ public class Circle extends Shape{
         this.radius = radius;
     }
 
-    public Circle(Point center, Point radius) {
-        this.center = center;
-        this.radius = radius;
-    }
 
     @Override
     public String toString() {
@@ -35,11 +40,11 @@ public class Circle extends Shape{
 
     @Override
     public double getPerimetr() {
-        return 2 * Math.PI * Math.hypot(radius.getY() - center.getX(), radius.getY() - center.getX());
+        return 2 * Math.PI * radiusDistance;
     }
 
     @Override
     public double getArea() {
-        return Math.PI * Math.pow(Math.hypot(radius.getY() - center.getX(), radius.getY() - center.getX()), 2.0);
+        return Math.PI * Math.pow(radiusDistance, 2.0);
     }
 }

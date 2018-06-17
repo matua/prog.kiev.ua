@@ -8,6 +8,17 @@ public class Rectangle extends Shape {
     private Point b;
     private Point c;
     private Point d;
+    private double sideOne;
+    private double sideTwo;
+
+    public Rectangle(Point a, Point b, Point c, Point d) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+        sideOne = Math.hypot(a.getX() - b.getX(), a.getY() - b.getY());
+        sideTwo = Math.hypot(b.getX() - c.getX(), b.getY() - c.getY());
+    }
 
     public Point getA() {
         return a;
@@ -41,13 +52,6 @@ public class Rectangle extends Shape {
         this.d = d;
     }
 
-    public Rectangle(Point a, Point b, Point c, Point d) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.d = d;
-    }
-
     @Override
     public String toString() {
         return "Rectangle";
@@ -55,11 +59,11 @@ public class Rectangle extends Shape {
 
     @Override
     public double getPerimetr() {
-        return (Math.hypot(a.getX() - b.getX(), a.getY() - b.getY()) + Math.hypot(b.getX() - c.getX(), b.getY() - c.getY())) * 2;
+        return  sideOne + sideTwo * 2;
     }
 
     @Override
     public double getArea() {
-        return Math.hypot(a.getX() - b.getX(), a.getY() - b.getY()) * Math.hypot(b.getX() - c.getX(), b.getY() - c.getY());
+        return sideOne * sideTwo;
     }
 }

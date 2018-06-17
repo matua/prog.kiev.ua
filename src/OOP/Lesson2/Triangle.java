@@ -7,6 +7,18 @@ public class Triangle extends Shape {
     private Point a;
     private Point b;
     private Point c;
+    private double sideOne;
+    private double sideTwo;
+    private double sideThree;
+
+    public Triangle(Point a, Point b, Point c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        sideOne = Math.hypot(a.getX() - b.getX(), a.getY() - b.getY());
+        sideTwo = Math.hypot(b.getX() - c.getX(), b.getY() - c.getY());
+        sideThree = Math.hypot(c.getX() - a.getX(), c.getY() - a.getY());
+    }
 
     public Point getA() {
         return a;
@@ -32,12 +44,6 @@ public class Triangle extends Shape {
         this.c = c;
     }
 
-    public Triangle(Point a, Point b, Point c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
-    }
-
     @Override
     public String toString() {
         return "Triangle";
@@ -45,12 +51,12 @@ public class Triangle extends Shape {
 
     @Override
     public double getPerimetr() {
-        return  Math.hypot(a.getX() - b.getX(), a.getY() - b.getY()) + Math.hypot(b.getX() - c.getX(), b.getY() - c.getY()) + Math.hypot(c.getX() - a.getX(), c.getY() - a.getY());
+        return sideOne + sideTwo + sideThree;
     }
 
     @Override
     public double getArea() {
-        double p = (Math.hypot(a.getX() - b.getX(), a.getY() - b.getY()) + Math.hypot(b.getX() - c.getX(), b.getY() - c.getY()) + Math.hypot(c.getX() - a.getX(), c.getY() - a.getY())) / 2;
-        return Math.sqrt(p * (p - Math.hypot(a.getX() - b.getX(), a.getY() - b.getY())) * (p - Math.hypot(b.getX() - c.getX(), b.getY() - c.getY())) * (p - Math.hypot(c.getX() - a.getX(), c.getY() - a.getY())));
+        return Math.sqrt(getPerimetr() / 2 * (getPerimetr() / 2 - sideOne) * (getPerimetr() / 2 - sideTwo) * (getPerimetr() / 2 - sideThree));
+
     }
 }

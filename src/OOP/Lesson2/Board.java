@@ -19,7 +19,7 @@ public class Board {
                 System.out.println("Place is already taken!");
             } else {
                 shapes[position - 1] = shape;
-                System.out.format("Figure %s's been put into the space %d.\n", shape.toString(), position);
+                System.out.format("figure %s's been put into the space %d.\n", shape.toString(), position);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("The board has 4 spaces only. You have to enter a space number from 1 to 4.");
@@ -54,7 +54,7 @@ public class Board {
         return area;
     }
 
-    public void infoBoard() {
-        System.out.println(Arrays.toString(shapes));
+    public String infoBoard() {
+        return Arrays.toString(shapes);
     }
 }
