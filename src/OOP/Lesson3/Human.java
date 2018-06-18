@@ -10,6 +10,9 @@ public class Human {
     private int age;
     private boolean sex; //true for male, false for female
 
+    public Human() {
+    }
+
     public Human(String firstName, String lastName, String patronymic, int age, boolean sex) {
         this.firstName = firstName;
         this.lastName = lastName;

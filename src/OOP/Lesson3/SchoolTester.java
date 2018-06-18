@@ -22,6 +22,9 @@ public class SchoolTester {
         group.addStudent(one);
         group.addStudent(two);
         group.addStudent(three);
+        group.searchStudent("Kovsh");
+        group.searchStudent("Klushkin");
+        group.searchStudent("Klushkina");
         group.deleteStudent("Terkin");
         System.out.println(group);
         group.deleteStudent("Terkin");
@@ -46,8 +49,11 @@ public class SchoolTester {
         group.addStudent(one);
         group.addStudent(eleven);
         System.out.println(group);
-
-
-
+        group.searchStudent("Kovsh");
+        group.deleteStudent("Kovsh");
+        group.searchStudent("Kovsh");
+        group.deleteStudent("Kovsh");
+        group.addStudent(ten);
+        group.searchStudent("Kovsh");
     }
 }
