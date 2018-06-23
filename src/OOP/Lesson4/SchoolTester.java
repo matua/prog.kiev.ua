@@ -7,11 +7,11 @@ import java.util.Arrays;
 
 public class SchoolTester {
     public static void main(String[] args) {
-        Student one = new Student("Vasiliy", "Terkin", "Ivanovich", 20, true, false, "Law", 3);
+        Student one = new Student("Vasiliy", "Terkin", "Ivanovich", 21, true, false, "Law", 3);
         Student two = new Student("Nikola", "Boyko", "Bogdanovich", 21, true, false, "Medical", 4);
-        Student three = new Student("Valentina", "Klushkina", "Ivanovna", 18, false, true, "Medical", 2);
+        Student three = new Student("Valentina", "Klushkina", "Ivanovna", 19, false, true, "Medical", 2);
         Student four = new Student("Konstantin", "Mudko", "Gorelovich", 17, true, false, "Law", 1);
-        Student five = new Student("Merkuri", "Kozlikin", "Zateevich", 22, true, true, "Medical", 3);
+        Student five = new Student("Merkuri", "Kozlikin", "Zateevich", 20, true, true, "Medical", 3);
         Student six = new Student("Pasta", "Lapshina", "Doshirakovna", 22, false, true, "Art", 5);
         Student seven = new Student("Avgustina", "Yulieva", "Martovna", 18, false, false, "Philosophy", 1);
         Student eight = new Student("Periskop", "Mikroskop", "Binokolevich", 21, true, false, "Medical", 4);

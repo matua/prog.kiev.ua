@@ -34,7 +34,7 @@ public class Group implements Voencom {
             System.out.println("Please enter student patronymic and press ENTER");
             String patronymic = scanner.nextLine();
 
-            System.out.println("Please enter student sex (male or female and press ENTER");
+            System.out.println("Please enter student sex (male or female) and press ENTER");
             String sexString = scanner.nextLine();
 
             System.out.println("Please enter yes if student is a nerd and no otherwise");
@@ -189,8 +189,11 @@ public class Group implements Voencom {
             }
         }
         if (numberOfBigGuys == 0) {
-            System.out.println("There are no people for the war traning");
-            return null;
+            try {
+                throw new NoPeopleForArmyException();
+            } catch (NoPeopleForArmyException e) {
+                e.printStackTrace();
+            }
         }
         Student[] result = new Student[numberOfBigGuys];
         int init = 0;
