@@ -3,10 +3,7 @@ package OOP.Lesson5.ThreeFour;
 Created by matua on 16.06.2018 at 16:15
 */
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 
 public class Group implements Voencom {
@@ -209,9 +206,8 @@ public class Group implements Voencom {
         }
         return new Group(result);
     }
-//public Student(String firstName, String lastName, String patronymic, int age, boolean sex, boolean nerd, String faculty, int yearOfStudy)
-    public void saveToFile() throws IOException {
-        File file = new File("/savedGroup.csv");
+
+    public void saveToFile(File file) throws IOException {
         file.createNewFile();
 
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(file))) {
@@ -235,4 +231,25 @@ public class Group implements Voencom {
             }
         }
     }
+
+    //public Student(String firstName, String lastName, String patronymic, int age, boolean sex, boolean nerd, String faculty, int yearOfStudy)
+    public static Group readFromFile(File file) throws IOException {
+        Group group = new Group();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            while(bufferedReader.ready()) {
+                String [] data = bufferedReader.readLine().split(", ");
+                String firtName = data[0];
+                String lastName = data[1];
+                String patronymic = data[2];
+                int age = Integer.parseInt(data[3]);
+                boolean sex = Boolean.parseBoolean(data[4]);
+                boolean nerd = Boolean.parseBoolean(data[5]);
+                String faculty = data[6];
+                int year = Integer.parseInt(data[7]);
+                group.addStudent(new Student(firtName, lastName, patronymic, age, sex, nerd, faculty, year));
+            }
+        }
+        return group;
+    }
+
 }

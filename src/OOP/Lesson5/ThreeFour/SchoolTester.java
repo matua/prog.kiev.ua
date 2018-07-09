@@ -3,6 +3,7 @@ package OOP.Lesson5.ThreeFour;
 Created by matua on 16.06.2018 at 16:35
 */
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -58,7 +59,7 @@ public class SchoolTester {
 //        group.deleteStudent("Kovsh");
 //        group.addStudent(ten);
 //        group.searchStudent("Kovsh");
-        group.addStudent(Group.userInputStudent());
+//        group.addStudent(Group.userInputStudent());
 //        System.out.println(group);
 
         //sorting by age
@@ -112,10 +113,12 @@ public class SchoolTester {
         System.out.println("VOENKOM INTERFACE METHOD");
         System.out.println(group.overEighteen());
 
-        try {
-            group.saveToFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            group.saveToFile(new File("/savedFile.csv"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+
     }
 }
