@@ -112,13 +112,5 @@ public class SchoolTester {
         System.out.println(group);
         System.out.println("VOENKOM INTERFACE METHOD");
         System.out.println(group.overEighteen());
-
-//        try {
-//            group.saveToFile(new File("/savedFile.csv"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-
     }
 }

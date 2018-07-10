@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Group implements Voencom {
-    private Student[] group = new Student[10];
+    private static Student[] group = new Student[10];
 
     public Group(Student[] group) {
         this.group = group;
@@ -206,50 +206,4 @@ public class Group implements Voencom {
         }
         return new Group(result);
     }
-
-    public void saveToFile(File file) throws IOException {
-        file.createNewFile();
-
-        try (PrintWriter printWriter = new PrintWriter(new FileWriter(file))) {
-            for(Student student : group) {
-                printWriter.print(student.getFirstName());
-                printWriter.print(", ");
-                printWriter.print(student.getLastName());
-                printWriter.print(", ");
-                printWriter.print(student.getPatronymic());
-                printWriter.print(", ");
-                printWriter.print(student.getAge());
-                printWriter.print(", ");
-                printWriter.print(student.isSex());
-                printWriter.print(", ");
-                printWriter.print(student.isNerd());
-                printWriter.print(", ");
-                printWriter.print(student.getFaculty());
-                printWriter.print(", ");
-                printWriter.print(student.getYearOfStudy());
-                printWriter.println();
-            }
-        }
-    }
-
-    //public Student(String firstName, String lastName, String patronymic, int age, boolean sex, boolean nerd, String faculty, int yearOfStudy)
-    public static Group readFromFile(File file) throws IOException {
-        Group group = new Group();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
-            while(bufferedReader.ready()) {
-                String [] data = bufferedReader.readLine().split(", ");
-                String firtName = data[0];
-                String lastName = data[1];
-                String patronymic = data[2];
-                int age = Integer.parseInt(data[3]);
-                boolean sex = Boolean.parseBoolean(data[4]);
-                boolean nerd = Boolean.parseBoolean(data[5]);
-                String faculty = data[6];
-                int year = Integer.parseInt(data[7]);
-                group.addStudent(new Student(firtName, lastName, patronymic, age, sex, nerd, faculty, year));
-            }
-        }
-        return group;
-    }
-
 }
