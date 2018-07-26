@@ -17,8 +17,10 @@ public class ShellSortingAlgorithm {
             h = h * 3 + 1;
         }
 
-        while (h > 0) {
-            Thread thread = new Thread(new SortingThread(h, array), "Thread - " + String.valueOf(h));
+        Thread thread = null;
+
+        for (; h > 0 ;) {
+            thread = new Thread(new SortingThread(h, array), "Thread - " + String.valueOf(h));
             thread.start();
             h = (h - 1) / 3;
             thread.join();
