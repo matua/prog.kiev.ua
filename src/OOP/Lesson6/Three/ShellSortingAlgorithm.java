@@ -9,9 +9,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ShellSortingAlgorithm {
-    public static void shellSort(int[] array) throws InterruptedException {
-        int inner, outer;
-        int temp;
+    public static void shellSort(int[] array) {
 
         int h = 1;
         // ищем начальное значение h
@@ -19,9 +17,7 @@ public class ShellSortingAlgorithm {
             h = h * 3 + 1;
         }
 
-        Thread thread = null;
-
-        for (; h > 0 ;) {
+        for (; h > 0; ) {
             ExecutorService service = Executors.newSingleThreadExecutor();
             for (int i = 0; i < 100; i++) {
                 service.execute(new SortingThread(h, array));
@@ -30,7 +26,7 @@ public class ShellSortingAlgorithm {
         }
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         int[] unsortedArray = new int[2500];
         Random random = new Random();
         for (int i = 0; i < unsortedArray.length; i++) {
