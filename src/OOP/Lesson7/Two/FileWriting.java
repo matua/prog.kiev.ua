@@ -9,8 +9,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class FileWriting implements Runnable {
-    Action action;
-    File copy;
+    private Action action;
+    private File copy;
 
     public FileWriting(Action action, File copy) {
         this.action = action;

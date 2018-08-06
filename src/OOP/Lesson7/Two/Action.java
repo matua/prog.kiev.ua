@@ -11,18 +11,17 @@ import java.io.IOException;
 public class Action {
     private byte[] buffer;
     private double totalReadFiles;
-    File original;
-    long fileSize;
+    private long fileSize;
+    private volatile int readFiles;
+    private boolean turn = false;
+    private boolean print = false;
+    private boolean stop = false;
 
     public Action(File original) {
-        this.original = original;
         totalReadFiles = 0;
         fileSize = original.length();
         buffer = new byte[1024 * 10];
     }
-
-    private boolean turn = false;
-    private boolean stop = false;
 
     public boolean isStop() {
         return stop;
@@ -41,11 +40,8 @@ public class Action {
             }
         }
         try {
-            int readFiles = fis.read(buffer);
+            readFiles = fis.read(buffer);
             turn = true;
-            totalReadFiles += readFiles;
-            double percentage = totalReadFiles / fileSize * 100;
-                System.out.printf("%.2f%%\n", percentage);
             notifyAll();
         } catch (IOException e) {
             e.printStackTrace();
@@ -63,9 +59,26 @@ public class Action {
         try {
             fos.write(buffer);
             turn = false;
+            print = true;
             notifyAll();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public synchronized void printStatus() {
+        while (!print) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            totalReadFiles += readFiles;
+            double percentage = totalReadFiles / fileSize * 100;
+            System.out.printf("%.2f%%\n", percentage);
+            print = false;
+            turn = false;
+            notifyAll();
         }
     }
 }

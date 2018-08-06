@@ -10,8 +10,8 @@ import java.io.IOException;
 
 public class FileReading implements Runnable {
 
-    Action action;
-    File original;
+    private Action action;
+    private File original;
 
     public FileReading(Action action, File original) {
         this.action = action;

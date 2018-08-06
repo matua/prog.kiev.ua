@@ -14,14 +14,24 @@ public class Main {
         String userFile = scanner.nextLine();
 
         File original = new File(userFile);
-        File copy = new File(original.getParent() + "/" + original.getName()+"_COPY");
+
+        File copy;
+
+        if (original.getName().contains(".")) {
+            copy = new File(original.getParent() + "/" + original.getName().substring(0, original.getName().lastIndexOf('.')) + "_COPY" + original.getName().substring(original.getName().lastIndexOf('.')));
+        } else {
+            copy = new File(original.getParent() + "/" +"_COPY");
+        }
+
 
         Action copying = new Action(original);
 
         Thread copyingThread = new Thread(new FileReading(copying, original));
         Thread pastingThread = new Thread(new FileWriting(copying, copy));
+        Thread statusThread = new Thread(new Status(copying));
 
         copyingThread.start();
         pastingThread.start();
+        statusThread.start();
     }
 }
