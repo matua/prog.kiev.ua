@@ -9,7 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class FileWriting implements Runnable {
-    Action action;
+    private Action action;
     private File copy;
 
     public FileWriting(Action action, File copy) {
