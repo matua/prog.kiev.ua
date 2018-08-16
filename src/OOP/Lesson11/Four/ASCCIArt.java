@@ -358,7 +358,7 @@ public class ASCCIArt {
 
     public static void convert(String text) {
         char[] characters = text.toCharArray();
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < splitLetter(alphabet.get('a')).length; i++) {
             for (char ch : characters) {
                 System.out.print(splitLetter(alphabet.get(ch))[i]);
             }
