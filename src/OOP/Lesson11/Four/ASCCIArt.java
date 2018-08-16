@@ -371,7 +371,7 @@ public class ASCCIArt {
         }
     }
 
-    public static String[] splitLetter(String ascciLetter) {
+    private static String[] splitLetter(String ascciLetter) {
         return ascciLetter.split("\n");
     }
 }
