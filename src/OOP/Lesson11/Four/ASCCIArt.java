@@ -360,12 +360,7 @@ public class ASCCIArt {
         char[] characters = text.toCharArray();
         for (int i = 0; i < splitLetter(alphabet.get('a')).length; i++) {
             for (char ch : characters) {
-                String asccii = alphabet.get(ch);
-                if (asccii!=null) {
-                    System.out.print(splitLetter(asccii)[i]);
-                } else {
-                    System.out.print("        ");
-                }
+                    System.out.print(splitLetter(alphabet.getOrDefault(ch, "        \n        \n        \n        \n        \n        \n        \n        \n        \n        \n        \n"))[i]);
             }
             System.out.print(System.lineSeparator());
         }
