@@ -26,6 +26,8 @@ public class Client implements Runnable {
             pw.printf("This is request #%d\n", counter);
             pw.println(System.getProperties().getProperty("os.name"));
             pw.println(System.getProperties().getProperty("os.version"));
+            pw.printf("Memory: %d GB\n", Runtime.getRuntime().totalMemory()/1024/1024);
+            pw.printf("%d processors\n", Runtime.getRuntime().availableProcessors());
         } catch (IOException e) {
             e.printStackTrace();
         }
