@@ -23,9 +23,9 @@ public class JSONParsing {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Gson gson = new Gson(); // Or use new GsonBuilder().create();
+        Gson gson = new Gson();
 
-        BusinessCard businessCard = gson.fromJson(json, BusinessCard.class); // deserializes json into target2
+        BusinessCard businessCard = gson.fromJson(json, BusinessCard.class);
         System.out.println(businessCard);
     }
 }
