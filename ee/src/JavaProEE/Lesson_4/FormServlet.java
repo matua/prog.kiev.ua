@@ -1,4 +1,4 @@
-package JavaPro.Lesson_4;
+package JavaProEE.Lesson_4;
 /*
 Created by matua on 06.09.2018 at 17:37
 */
