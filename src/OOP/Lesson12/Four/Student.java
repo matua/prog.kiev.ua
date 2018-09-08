@@ -1,9 +1,12 @@
-package OOP.Lesson3;
+package OOP.Lesson12.Four;
 /*
-Created by matua on 16.06.2018 at 16:07
+Created by matua on 11.08.2018 at 12:18
 */
 
-public class Student extends Human {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Student extends Human implements Serializable {
     private boolean nerd;
     private String faculty;
     private int yearOfStudy;
@@ -46,5 +49,21 @@ public class Student extends Human {
                 "\n\t" + (isNerd()?"is a nerd":"is not a nerd") +
                 "\n\tstudies at faculty of '" + faculty + '\'' +
                 "\n\tyear: " + yearOfStudy;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        if (!super.equals(o)) return false;
+        Student student = (Student) o;
+        return nerd == student.nerd &&
+                yearOfStudy == student.yearOfStudy &&
+                Objects.equals(faculty, student.faculty);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), nerd, faculty, yearOfStudy);
     }
 }

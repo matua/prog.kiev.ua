@@ -13,8 +13,8 @@ public class FilterSameWordsInTwoFiles {
         result.createNewFile();
 
         try (BufferedReader fileOneBuffer = new BufferedReader(new FileReader(one));
-        BufferedReader fileTwoBuffer = new BufferedReader(new FileReader(two));
-        PrintWriter fileWriter = new PrintWriter(new FileWriter(result))) {
+             BufferedReader fileTwoBuffer = new BufferedReader(new FileReader(two));
+             PrintWriter fileWriter = new PrintWriter(new FileWriter(result))) {
             while(fileOneBuffer.ready()) {
                 fileOne += fileOneBuffer.readLine();
             }

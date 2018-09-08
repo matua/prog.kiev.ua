@@ -3,7 +3,10 @@ package OOP.Lesson3;
 Created by matua on 16.06.2018 at 16:15
 */
 
-public class Group {
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Group implements Voencom{
     private Student [] group = new Student[10];
 
     public Group(Student[] group) {
@@ -11,6 +14,59 @@ public class Group {
     }
 
     public Group() {
+    }
+
+    public Student[] getGroup() {
+        return group;
+    }
+
+    public void setGroup(Student[] group) {
+        this.group = group;
+    }
+
+    public static Student userInputStudent() {
+        try(Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Please enter student first name and press ENTER");
+            String firstName = scanner.nextLine();
+
+            System.out.println("Please enter student last name and press ENTER");
+            String lastName = scanner.nextLine();
+
+            System.out.println("Please enter student patronymic and press ENTER");
+            String patronymic = scanner.nextLine();
+
+            System.out.println("Please enter student sex (male or female and press ENTER");
+            String sexString = scanner.nextLine();
+
+            System.out.println("Please enter yes if student is a nerd and no otherwise");
+            String nerdString = scanner.nextLine();
+
+            System.out.println("Please enter student faculty and press ENTER");
+            String faculty = scanner.nextLine();
+
+            System.out.println("Please enter student year of study and press ENTER");
+            int yearOfStudy = scanner.nextInt();
+
+            System.out.println("Please enter student age and press ENTER");
+            int age = scanner.nextInt();
+
+            boolean sex = false;
+            boolean nerd = false;
+
+            if (sexString.equals("male")) {
+                sex = true;
+            } else if (sexString.equals("female")) {
+                sex = false;
+            }
+
+            if (nerdString.equals("yes")) {
+                nerd = true;
+            } else if (nerdString.equals("no")) {
+                nerd = false;
+            }
+            Student student = new Student(firstName, lastName, patronymic, age, sex, nerd, faculty, yearOfStudy);
+            return student;
+        }
     }
 
     public void addStudent(Student studentToAdd) {
@@ -97,20 +153,21 @@ public class Group {
         return list;
     }
 
+
     @Override
     public String toString() {
         //Sorting students by their LAST NAMES ** getLastName() ** by using bubble sorting algorithm
         Student [] list = existingStudentsArray();
-        for (int i = 0; i < list.length - 1; i++) {
-            for (int j = 1; j < list.length - i; j++) {
-                Student temp;
-                if (list[j].getLastName().compareTo(list[j - 1].getLastName()) < 0) {
-                    temp = list[j];
-                    list[j] = list[j - 1];
-                    list[j - 1] = temp;
-                }
-            }
-        }
+//        for (int i = 0; i < list.length - 1; i++) {
+//            for (int j = 1; j < list.length - i; j++) {
+//                Student temp;
+//                if (list[j].getLastName().compareTo(list[j - 1].getLastName()) < 0) {
+//                    temp = list[j];
+//                    list[j] = list[j - 1];
+//                    list[j - 1] = temp;
+//                }
+//            }
+//        }
         //constructing a formatted OUTPUT
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(System.lineSeparator());
@@ -132,5 +189,24 @@ public class Group {
             stringBuilder.append(" student(s).\n");
             return stringBuilder.toString();
         }
+    }
+
+    @Override
+    public Student[] overEighteen(Student[] listToFilter) {
+        int numberOfBigGuys = 0;
+        for(Student student : group) {
+            if (student.getAge() > 18) {
+                numberOfBigGuys++;
+            }
+        }
+        Student [] filteredList = new Student[numberOfBigGuys];
+        for (int i = 0; i < group.length; i++) {
+            int init = 0;
+            if (group[i].getAge() > 18) {
+                filteredList[init] = group[i];
+                init++;
+            }
+        }
+        return filteredList;
     }
 }

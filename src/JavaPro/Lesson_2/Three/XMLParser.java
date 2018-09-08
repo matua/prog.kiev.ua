@@ -8,6 +8,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
@@ -33,14 +36,37 @@ public class XMLParser {
 
         String xml = sb.toString();
 
-        List<Currency> list = parse(xml);
+//        List<Currency> list = DOMparse(xml);
+//
+//        for (Currency currency : list) {
+//            System.out.println(currency);
+//        }
 
-        for (Currency currency : list) {
-            System.out.println(currency);
+        try {
+            JAXBparse(xml);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    public static List<Currency> parse(String file) {
+    public static void JAXBparse (String file) throws IOException {
+        File realFile = new File("/Users/matua/Downloads/result.xml");
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(realFile))) {
+            bw.write(file);
+        }
+
+        try {
+            JAXBContext context = JAXBContext.newInstance(ValCurs.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            Currency currency = (Currency) unmarshaller.unmarshal(realFile);
+            System.out.println(currency.toString());
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Currency> DOMparse(String file) {
         List<Currency> currencyList = new ArrayList<>();
         try {
             Document document = loadXMLFromString(file);

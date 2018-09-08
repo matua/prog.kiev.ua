@@ -11,6 +11,9 @@ public class Currency {
     private String name;
     private double value;
 
+    public Currency() {
+    }
+
     public Currency(String valuteID, int numCode, String charCode, int nominal, String name, double value) {
         this.valuteID = valuteID;
         this.numCode = numCode;
@@ -70,7 +73,7 @@ public class Currency {
 
     @Override
     public String toString() {
-        return  nominal + " " + name + " = " + value + " Russian Roubles\n" +
+        return nominal + " " + name + " = " + value + " Russian Roubles\n" +
                 "\tNumber Code: " + numCode + "\n" +
                 "\tCharacter Code: '" + charCode + '\'' + "\n" +
                 "\tName: " + valuteID + '\'' + "\n";
